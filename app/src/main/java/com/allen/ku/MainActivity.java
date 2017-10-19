@@ -1,5 +1,7 @@
 package com.allen.ku;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +12,9 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author husongzhen
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private RecyclerView recyclerView;
@@ -46,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return data;
     }
 
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     private void initList() {
         DemoBottomKuAdapter bottomKuAdapter = new DemoBottomKuAdapter(this);
         DemoKuAdapter demoAdapter = new DemoKuAdapter(this);
