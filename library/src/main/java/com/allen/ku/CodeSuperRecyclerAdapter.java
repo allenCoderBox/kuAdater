@@ -15,11 +15,10 @@ import java.util.List;
 /**
  * Created by husongzhen on 15/7/23.
  */
-public abstract class CodeSuperRecyclerAdapter<M> extends RecyclerView.Adapter<CodeSuperRecyclerAdapter.WebViewHolder>
-        implements View.OnClickListener {
+public abstract class CodeSuperRecyclerAdapter<M> extends RecyclerView.Adapter<CodeSuperRecyclerAdapter.WebViewHolder> {
 
 
-    protected List<M> dataList = new ArrayList<M>();
+    protected AdapterData dataList = new AdapterData();
     protected Context activity;
 
 
@@ -36,7 +35,7 @@ public abstract class CodeSuperRecyclerAdapter<M> extends RecyclerView.Adapter<C
     @Override
     public void onBindViewHolder(WebViewHolder holder, int i) {
         int index = getRealPosition(holder);
-        onBindView(holder.query, dataList.get(index), i);
+        onBindView(holder.query, (M) dataList.get(index), i);
     }
 
     protected abstract void onBindView(CodeQuery query, M m, int position);
@@ -61,7 +60,7 @@ public abstract class CodeSuperRecyclerAdapter<M> extends RecyclerView.Adapter<C
         if (!CodeCheck.isNotNullList(data)) {
             data = new ArrayList<M>();
         }
-        dataList = data;
+        dataList.reloadData(data);
         notifyDataSetChanged();
     }
 
@@ -113,7 +112,7 @@ public abstract class CodeSuperRecyclerAdapter<M> extends RecyclerView.Adapter<C
 
 
     public List<M> getDataList() {
-        return dataList;
+        return dataList.getData();
     }
 
     public int indexOf(M item) {
@@ -178,6 +177,18 @@ public abstract class CodeSuperRecyclerAdapter<M> extends RecyclerView.Adapter<C
     public void clear() {
         dataList.clear();
         notifyDataSetChanged();
+    }
+
+    public void addFooter(Object bottom) {
+        int index = dataList.size();
+        dataList.addFooter(bottom);
+        notifyItemInserted(index);
+        updateHolderPos(index);
+    }
+
+    public void addHeader(Object item) {
+        dataList.addHeader(item);
+        updateHolderPos(0);
     }
 
 
