@@ -1,10 +1,10 @@
 apply plugin: 'maven'
 
 //#包信息
-def ARTIFACTID = "kuAdapter"
+def ARTIFACTID = "KuAdapter"
 def LIBRARY_VERSION = "0.0.1"
 //#Mac下地址:file:///Users/<username>/my/local/repo
-def LOCAL_REPO_URL = "file:///Users/husongzhen/Documents/other/KuAdapter/maven/" + ARTIFACTID
+def LOCAL_REPO_URL = "file:///Users/husongzhen/Documents/other/" + ARTIFACTID
 uploadArchives {
     repositories.mavenDeployer {
         repository(url: LOCAL_REPO_URL)
