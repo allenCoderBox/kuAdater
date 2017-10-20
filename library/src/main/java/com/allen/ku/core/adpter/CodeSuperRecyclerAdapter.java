@@ -1,4 +1,4 @@
-package com.allen.ku;
+package com.allen.ku.core.adpter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

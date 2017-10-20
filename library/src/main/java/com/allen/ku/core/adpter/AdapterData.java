@@ -1,4 +1,4 @@
-package com.allen.ku;
+package com.allen.ku.core.adpter;
 
 import java.util.ArrayList;
 import java.util.List;

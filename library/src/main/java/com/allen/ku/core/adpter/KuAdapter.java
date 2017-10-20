@@ -1,4 +1,4 @@
-package com.allen.ku;
+package com.allen.ku.core.adpter;
 
 import android.content.Context;
 import android.util.SparseArray;
